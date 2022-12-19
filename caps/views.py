@@ -55,8 +55,3 @@ class CapUpdateDeleteAPIView(RetrieveUpdateDestroyAPIView):
     lookup_field = 'id'
     permission_classes = [IsAuthenticated]
 
-
-class CapsSortedAPIView(ListAPIView):
-    queryset = Cap.objects.all()
-    serializer_class = CapsSortedBySerializer
-    permission_classes = [IsAuthenticated]

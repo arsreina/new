@@ -154,19 +154,3 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = '__all__'
 
-
-class CapsSortedBySerializer(CapMainMenuSerializer, serializers.Serializer):
-    def popular(self):
-        caps = Cap.objects.all()
-        return Cap.objects.filter(lambda x: 'popular' in x.categories, caps.values())
-
-    def new(self):
-        obj = list(Cap.objects.all())
-        return obj.sort(key=lambda x: x.date_added)
-
-    def cheap_first(self):
-        obj = list(Cap.objects.all())
-        return obj.sort(key=lambda x: x.price)
-
-    def expensive_first(self):
-        return self.cheap_first()[::-1]
